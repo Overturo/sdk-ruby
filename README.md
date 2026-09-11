@@ -1,5 +1,5 @@
 > **Release mirror.** This repository is a read-only snapshot of
-> `overturo` 0.4.1, published from Overturo's main
+> `overturo` 0.4.2, published from Overturo's main
 > development repository. Issues and pull requests are welcome here; accepted
 > changes are ported upstream and appear in the next release snapshot.
 > Security reports: see [SECURITY.md](./SECURITY.md).
@@ -330,7 +330,7 @@ OVERTURO.connect.applications.list
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). Copyright (c) 2026 OmVi Labs Inc.
+MIT — see [LICENSE](./LICENSE). Copyright (c) 2026 Overturo Geneva Association.
 
 ## Authority records
 

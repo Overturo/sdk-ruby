@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.2] - 2026-09-11
+
+### Changed
+
+- Copyright holder in LICENSE and README is Overturo Geneva Association (the steward of the open-source libraries); 0.4.1 named a company by mistake.
+
 ## [0.4.1] - 2026-09-11
 
 ### Changed
