@@ -1,10 +1,11 @@
 # Changelog
 
-## [Unreleased]
+## [0.4.1] - 2026-09-11
 
 ### Changed
 
 - Repository, homepage, and issue-tracker metadata point at the public source mirror under https://github.com/overturo (spec 192); a LICENSE file now ships with the package.
+- README License section corrected: the gem is MIT-licensed (as the gemspec has always declared); the earlier "Proprietary" line was wrong.
 
 ## [0.4.0] - 2026-08-15
 
