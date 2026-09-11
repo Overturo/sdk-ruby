@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
                      "Covers all 7 product surfaces (Connect, Consent, Verify, Protect, Agree, Delegate, Comply) " \
                      "with Bearer token authentication."
   spec.homepage = "https://github.com/overturo/sdk-ruby"
-  spec.license = "MIT"
+  spec.license = "Apache-2.0"
   spec.required_ruby_version = ">= 3.1"
 
   spec.files = Dir["lib/**/*.rb", "LICENSE", "README.md"]

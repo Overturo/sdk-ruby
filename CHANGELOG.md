@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.0] - 2026-09-11
+
+### Changed
+
+- **Licence: Apache-2.0** (was MIT, a scaffold default). One outbound licence for every Overturo SDK — explicit patent grant, trademark exclusion, and contribution terms.
+
 ## [0.4.2] - 2026-09-11
 
 ### Changed
