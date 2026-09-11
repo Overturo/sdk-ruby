@@ -5,8 +5,7 @@ module Overturo
     module Verify
       # `/api/v1/vouches` supports index/create/show/destroy plus the
       # `/received` collection action. There is **no** PATCH endpoint —
-      # vouches are immutable once issued. Earlier versions of this SDK
-      # included Update; that path returned 404.
+      # vouches are immutable once issued.
       class Vouches < ApiResource
         include ApiOperations::Create
         include ApiOperations::Retrieve

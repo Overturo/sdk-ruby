@@ -12,7 +12,7 @@ module Overturo
     end
 
     # Machine code from a structured error body, across both authority
-    # 422 shapes (spec 180): the receipts read uses {"error" => "<code>",
+    # 422 shapes: the receipts read uses {"error" => "<code>",
     # "reason" => <message>}, the disclosure mint uses {"error" =>
     # <message>, "code" => "<code>"}. `code` wins when present; the two
     # shapes are the server's contract, surfaced as-is.
@@ -50,7 +50,7 @@ module Overturo
     429 => RateLimitError
   }.freeze
 
-  # ── OAP denial classes (spec 100-1 §3.1) ────────────────────────────
+  # ── OAP denial classes ──────────────────────────────────────────────
   # Raised by OAP-protocol failures (authorize, escalate, complete).
   # Carry the structured envelope fields so callers can branch on
   # `denial_category` or rescue the per-category subclass directly.
@@ -70,8 +70,8 @@ module Overturo
 
     # Build the most-specific subclass for an OAP error envelope.
     # Reason-code dispatch takes precedence over category dispatch so
-    # the most specific subclass wins (sub-spec 100-2 sequence
-    # denials are trajectory_denied but get their own subclass).
+    # the most specific subclass wins (sequence denials are
+    # trajectory_denied but get their own subclass).
     # @param envelope [Hash] the parsed JSON body (root, not the inner `error`)
     # @param status   [Integer, nil] HTTP status for transport-level matching
     def self.from_envelope(envelope, status: nil)
@@ -97,7 +97,7 @@ module Overturo
   class OAPIntentDenied < OAPDenied; end
   # denial_category == "trajectory_denied" — execution history blocked the action.
   class OAPTrajectoryDenied < OAPDenied; end
-  # Sub-spec 100-2 — sequence_bounds violation
+  # sequence_bounds violation
   # (sequence_prohibited / sequence_missing_predecessor). A trajectory
   # denial with a structural-ordering flavour.
   class OAPSequenceDenied < OAPTrajectoryDenied; end

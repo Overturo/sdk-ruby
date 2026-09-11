@@ -3,7 +3,7 @@
 module Overturo
   module Resources
     module Comply
-      # 126-SX-5 — read your residency posture (spec 117): a per-country map of
+      # Read your residency posture: a per-country map of
       # where your subjects' data is stored, the disclosure ledger, and an
       # assurance status. Export a signed Proof of Residency. Singleton (no id).
       class ResidencyPosture < ApiResource

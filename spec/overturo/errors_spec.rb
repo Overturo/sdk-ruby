@@ -67,7 +67,7 @@ RSpec.describe Overturo::Error do
   end
 end
 
-# Sub-spec 100-1 / 100-2 — OAP denial subclass dispatch.
+# OAP denial subclass dispatch.
 RSpec.describe Overturo::OAPDenied do
   def envelope(**fields)
     {
@@ -123,7 +123,7 @@ RSpec.describe Overturo::OAPDenied do
       expect(err.class).to eq(Overturo::OAPDenied)
     end
 
-    # ── Sub-spec 100-2 — sequence-code dispatch precedence ─────────
+    # ── sequence-code dispatch precedence ──────────────────────────
     %w[sequence_prohibited sequence_missing_predecessor].each do |code|
       it "dispatches #{code} to OAPSequenceDenied" do
         err = described_class.from_envelope(

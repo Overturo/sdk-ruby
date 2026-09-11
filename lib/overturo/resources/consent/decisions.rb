@@ -29,8 +29,8 @@ module Overturo
           params = locale.to_s.empty? ? {} : { locale: locale }
           response = http_client.get(path, params: params, headers: { "X-Publishable-Key" => publishable_key })
 
-          # The server wraps the inventory as {"flow" => {...}} (accord -> flow at
-          # the API boundary); return the inventory itself, matching the JS/py/node
+          # The server wraps the inventory as {"flow" => {...}}; return the
+          # inventory itself, matching the JS/py/node
           # clients' `envelope.flow`. An envelope-less 200 (a proxy/gateway
           # misconfig — the server is fail-closed) is a typed error, never a
           # silent pass-through of the whole body dressed up as the inventory.

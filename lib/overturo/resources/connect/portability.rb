@@ -3,7 +3,7 @@
 module Overturo
   module Resources
     module Connect
-      # 126-SX-5 — data portability (spec 125-CB-4, Art. 20). List the supported
+      # Data portability (GDPR Art. 20). List the supported
       # export formats and confirm a cross-border export/import. The self-service
       # *access* DSAR is a web-only export and is not part of the API surface.
       #

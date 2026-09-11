@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.1] - 2026-09-11
+
+### Changed
+
+- Source comments and this changelog describe behaviour only: planning references, section marks, and notes about earlier server behaviour were removed. A consent-session test fixture now uses the public `flow_id` key.
+
 ## [0.5.0] - 2026-09-11
 
 ### Changed
@@ -16,12 +22,10 @@
 
 ### Changed
 
-- Repository, homepage, and issue-tracker metadata point at the public source mirror under https://github.com/overturo (spec 192); a LICENSE file now ships with the package.
+- Repository, homepage, and issue-tracker metadata point at the public source mirror under https://github.com/overturo; a LICENSE file now ships with the package.
 - README License section corrected: the gem is MIT-licensed (as the gemspec has always declared); the earlier "Proprietary" line was wrong.
 
 ## [0.4.0] - 2026-08-15
-
-Spec: [`docs/specifications/189-DECISIONS-PREFLIGHT-DISCOVERY-SPEC.md`](../../docs/specifications/189-DECISIONS-PREFLIGHT-DISCOVERY-SPEC.md)
 
 ### Added — pre-flight disclosure discovery
 
@@ -38,8 +42,6 @@ Spec: [`docs/specifications/189-DECISIONS-PREFLIGHT-DISCOVERY-SPEC.md`](../../do
   `lib/sdk/shared/conformance/discovery/flow_disclosures.json`.
 
 ## [0.3.0] - 2026-08-06
-
-Spec: [`docs/specifications/180-AUTHORITY-SDK-SURFACE-SPEC.md`](../../docs/specifications/180-AUTHORITY-SDK-SURFACE-SPEC.md)
 
 ### Added — authority record client methods
 
@@ -61,8 +63,6 @@ Spec: [`docs/specifications/180-AUTHORITY-SDK-SURFACE-SPEC.md`](../../docs/speci
   shared corpus (the server's own verifier is the Ruby leg).
 
 ## [0.2.0] - 2026-06-26
-
-Spec: [`docs/specifications/126-SX-5-BACKEND-SDKS-SPEC.md`](../../docs/specifications/126-SX-5-BACKEND-SDKS-SPEC.md)
 
 ### Added — cross-border compliance capabilities
 

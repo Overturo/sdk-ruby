@@ -52,7 +52,7 @@ RSpec.describe Overturo::Resources::Comply::CleanRooms do
     end
   end
 
-  # 126-SX-5 — compute-to-data: the result surfaces its privacy parameters and a
+  # Compute-to-data: the result surfaces its privacy parameters and a
   # first-class `suppressed` flag (a full suppression is never a silent empty).
   describe "#run_query" do
     it "runs a query and surfaces the privacy parameters + result" do

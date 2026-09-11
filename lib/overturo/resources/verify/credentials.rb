@@ -5,8 +5,7 @@ module Overturo
     module Verify
       # `/api/v1/credentials` supports index/create/show/destroy plus the
       # `/wallet_pass` member action. There is **no** PATCH endpoint —
-      # credentials are immutable once issued. Earlier versions of this SDK
-      # included Update; that path returned 404.
+      # credentials are immutable once issued.
       class Credentials < ApiResource
         include ApiOperations::Create
         include ApiOperations::Retrieve

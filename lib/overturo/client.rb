@@ -94,7 +94,7 @@ module Overturo
       resource(Resources::Connect::Flows)
     end
 
-    # 126-SX-5 — data portability (CB-4 Art. 20).
+    # Data portability (GDPR Art. 20).
     def portability
       resource(Resources::Connect::Portability)
     end
@@ -208,7 +208,7 @@ module Overturo
       resource(Resources::Comply::CleanRooms)
     end
 
-    # 126-SX-5 — cross-border transfer register (124) + residency posture (117).
+    # Cross-border transfer register and residency posture.
     def transfer_register
       resource(Resources::Comply::TransferRegister)
     end

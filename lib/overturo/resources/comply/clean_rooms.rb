@@ -15,7 +15,7 @@ module Overturo
 
         custom_action :approve, method: :post
 
-        # 126-SX-5 — compute-to-data (spec 125-CB-3). Run a query inside the
+        # Compute-to-data. Run a query inside the
         # clean room and read its result. The result carries its privacy
         # parameters (`k_anonymity_met`, `noise_parameters`) and a first-class
         # `suppressed` flag + `suppression_reason`: a full k-anonymity

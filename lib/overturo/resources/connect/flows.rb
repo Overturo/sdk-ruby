@@ -5,11 +5,6 @@ module Overturo
     module Connect
       # Flows are nested under applications:
       # /api/v1/applications/:application_id/flows[/:id][/<action>]
-      #
-      # Earlier versions of this SDK declared `RESOURCE_PATH = "/flows"` and
-      # operated as a top-level resource — that path never existed in the
-      # Rails app and every call returned 404. The current shape mirrors
-      # `Connect::Webhooks` and matches the actual nested route.
       class Flows < ApiResource
         include ApiOperations::NestedResource
 

@@ -3,7 +3,7 @@
 module Overturo
   module Resources
     module Comply
-      # 126-SX-5 — read the cross-border transfer register (spec 124) and export
+      # Read the cross-border transfer register and export
       # its signed, verifiable evidence package. Each entry carries the lawful
       # basis it relied on, the adequacy verdict, and the country pair. Read and
       # export only — the SDK never creates a transfer.

@@ -3,8 +3,8 @@
 module Overturo
   module Resources
     module Delegate
-      # Durable authorization records — `GET /api/v1/authorization_receipts/:id`
-      # (spec 180; the records themselves are 178-AR-1/AR-6). Requires the
+      # Durable authorization records — `GET /api/v1/authorization_receipts/:id`.
+      # Requires the
       # `audit:verify` token scope. The 404 contract is parity-preserving by
       # design: unknown, foreign-account, and non-authority ids are
       # indistinguishable — don't try to disambiguate client-side.

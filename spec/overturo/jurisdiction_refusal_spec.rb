@@ -2,10 +2,10 @@
 
 require "spec_helper"
 
-# 126-SX-5 — this SDK declares no jurisdiction (it has no authorize surface), but
+# This SDK declares no jurisdiction (it has no authorize surface), but
 # it surfaces a jurisdiction refusal via the existing OAPDenied#failed_bound,
 # distinct from a transport-level denial that carries no bound.
-RSpec.describe "126-SX-5 jurisdiction refusal" do
+RSpec.describe "jurisdiction refusal" do
   it "surfaces a jurisdiction refusal via OAPDenied#failed_bound" do
     refusal = Overturo::OAPDenied.from_envelope(
       {

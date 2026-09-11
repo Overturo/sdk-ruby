@@ -3,8 +3,8 @@
 module Overturo
   module Resources
     module Delegate
-      # Operator-declared disclosure receipts — `POST /api/v1/disclosure_receipts`
-      # (spec 180; the mint itself is 178-AR-5). Requires the `disclosures:write`
+      # Operator-declared disclosure receipts — `POST /api/v1/disclosure_receipts`.
+      # Requires the `disclosures:write`
       # token scope. Mint-only by design: the operator disclosure log page is the
       # read side (programmatic reads are a registered deferred capability).
       #

@@ -21,8 +21,8 @@ RSpec.describe Overturo::Resources::Core::Accounts do
   end
 
   # NOTE: Create / Retrieve / Update / Delete are intentionally not implemented —
-  # the underlying Rails route is `resources :accounts, only: [:index]`. Account
-  # creation goes through the dashboard signup flow.
+  # the accounts API is list-only. Account creation goes through the dashboard
+  # signup flow.
   describe "removed methods" do
     it "does not respond to create" do
       expect(accounts).not_to respond_to(:create)

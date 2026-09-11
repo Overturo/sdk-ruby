@@ -8,10 +8,6 @@ module Overturo
       # member action, which is mounted as `DELETE /delegations/:id/revoke`
       # (the verb encodes destruction; the path encodes that revocation is a
       # specific lifecycle event distinct from a hard delete).
-      #
-      # Earlier versions of this SDK included `ApiOperations::Delete` and
-      # declared `custom_action :revoke, method: :post`; both paths returned
-      # 404 (the bare DELETE doesn't exist; the route uses DELETE not POST).
       class Delegations < ApiResource
         include ApiOperations::Create
         include ApiOperations::Retrieve

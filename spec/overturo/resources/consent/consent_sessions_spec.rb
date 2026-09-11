@@ -43,7 +43,7 @@ RSpec.describe Overturo::Resources::Consent::ConsentSessions do
         .with(query: { consent_token: "ct_abc" })
         .to_return(
           status: 200,
-          body: '{"valid":true,"status":"fulfilled","accord_id":"flw_xyz"}',
+          body: '{"valid":true,"status":"fulfilled","flow_id":"flw_xyz"}',
           headers: { "Content-Type" => "application/json" }
         )
 
