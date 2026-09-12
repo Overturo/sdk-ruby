@@ -11,6 +11,8 @@ module Overturo
         include ApiOperations::List
 
         RESOURCE_PATH = "/transfer_register"
+        # 193 D12 — endpoints built by explicit http_client calls below.
+        declare_endpoint :post, "<resource>/evidence_package"
         OBJECT_KEY = "transfer"
         LIST_KEY = "transfers"
 

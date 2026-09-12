@@ -18,6 +18,8 @@ module Overturo
       # (Overturo::NotFoundError).
       class Decisions < ApiResource
         RESOURCE_PATH = "/decisions"
+        # 193 D12 — endpoints built by explicit http_client calls below.
+        declare_endpoint :get, "<resource>/flows/{flow_id}/disclosures"
 
         def discover(flow_id, publishable_key:, locale: nil)
           raise ArgumentError, "flow_id is required" if flow_id.nil? || flow_id.to_s.empty?

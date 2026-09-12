@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.5.2] - 2026-09-11
+
+### Fixed
+
+- `delegations` now reads the `delegation_grant` / `delegation_grants` response keys the API actually returns; every delegation call previously came back as the raw envelope.
+- `webhooks` now reads the `webhook_subscription` / `webhook_subscriptions` response keys, for the same reason.
+- Errors read the API's `{error: {code, message}}` envelope: `error_code` is the code (it was the whole envelope) and the message is `code: message`.
+- `accounts.list` now reads the bare collection the accounts API renders (it came back empty before).
+- `nested_resource` no longer derives the generated `list_*` method name from the response key (`list_method:` sets it explicitly), so the public method names are unchanged.
+
 ## [0.5.1] - 2026-09-11
 
 ### Changed

@@ -24,8 +24,8 @@ RSpec.describe Overturo::Resources::Verify::Presentations do
   end
 
   describe "#present" do
-    it "sends POST to present and returns raw response" do
-      stub = stub_request(:post, "https://overturo.com/api/v1/presentations/pres_1/present")
+    it "sends PATCH to present (the API declares the present action as an update) and returns raw response" do
+      stub = stub_request(:patch, "https://overturo.com/api/v1/presentations/pres_1/present")
              .with(body: '{"disclosed_claims":["name","email"]}')
              .to_return(
                status: 200,

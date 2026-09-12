@@ -5,38 +5,18 @@ require "spec_helper"
 RSpec.describe Overturo::Resources::Delegate::AuthorizationReceipts do
   let(:client) { test_client }
 
-  let(:canonical_body) do
-    {
-      "authorization_receipt" => {
-        "record" => { "record_type" => "authorization_record", "record_id" => "acc_123" },
-        "receipt_metadata" => { "status" => "active" }
-      }
-    }
-  end
+  let(:canonical_body) { ApiCorpus.body("AuthorizationReceipts_show") }
 
-  let(:signed_envelope) do
-    {
-      "receipt" => { "record" => { "record_type" => "authorization_record", "record_id" => "acc_123" } },
-      "signature" => {
-        "algorithm" => "Ed25519",
-        "canonicalization" => "overturo-jcs-1",
-        "region" => "us",
-        "key_version" => "us-1",
-        "value" => "c2ln",
-        "public_key" => "a2V5",
-        "key_discovery" => "https://overturo.com/.well-known/witness-configuration",
-        "signed_at" => "2026-08-06T00:00:00Z"
-      }
-    }
-  end
+  let(:signed_envelope) { ApiCorpus.body("AuthorizationReceipts_show", step: "signed") }
 
   describe "#retrieve" do
-    it "defaults to the canonical flavor with no query and unwraps the document" do
-      stub_api(:get, "/authorization_receipts/acc_123", body: canonical_body)
+    it "defaults to the canonical flavor with no query and unwraps the recorded document" do
+      ApiCorpus.stub!("AuthorizationReceipts_show")
 
       receipt = client.delegate_ns.authorization_receipts.retrieve("acc_123")
 
       expect(receipt.record["record_type"]).to eq("authorization_record")
+      expect(receipt.record["record_id"]).to eq("<PREFIX_ID:1>")
       expect(a_request(:get, "https://overturo.com/api/v1/authorization_receipts/acc_123")
         .with { |req| req.uri.query.nil? }).to have_been_made
     end
@@ -46,11 +26,11 @@ RSpec.describe Overturo::Resources::Delegate::AuthorizationReceipts do
 
       receipt = client.delegate_ns.authorization_receipts.retrieve("acc_123", flavor: "canonical")
 
-      expect(receipt.record["record_id"]).to eq("acc_123")
+      expect(receipt.record["record_id"]).to eq("<PREFIX_ID:1>")
     end
 
     it "returns the signed flavor as the bare envelope Hash (a portable artifact)" do
-      stub_api(:get, "/authorization_receipts/acc_123", query: { "flavor" => "signed" }, body: signed_envelope)
+      ApiCorpus.stub!("AuthorizationReceipts_show", step: "signed")
 
       envelope = client.delegate_ns.authorization_receipts.retrieve("acc_123", flavor: "signed")
 

@@ -13,6 +13,8 @@ module Overturo
         include ApiOperations::Delete
 
         RESOURCE_PATH = "/vouches"
+        # 193 D12 — endpoints built by explicit http_client calls below.
+        declare_endpoint :get, "<resource>/received"
         OBJECT_KEY = "vouch"
         LIST_KEY = "vouches"
 

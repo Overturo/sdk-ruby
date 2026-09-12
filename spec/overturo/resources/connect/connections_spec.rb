@@ -7,29 +7,31 @@ RSpec.describe Overturo::Resources::Connect::Connections do
   let(:connections) { client.connect.connections }
 
   describe "#list" do
-    it "lists connections with pagination" do
-      stub_api(:get, "/connections", body: {
-                 "connections" => [{ "id" => "conn_1" }, { "id" => "conn_2" }],
-                 "pagination" => { "page" => 1, "per_page" => 25, "total" => 2 }
-               })
+    it "lists connections" do
+      ApiCorpus.stub!("Connections_index")
 
       result = connections.list
       expect(result).to be_a(Overturo::ListObject)
-      expect(result.data.size).to eq(2)
+      expect(result.data.size).to eq(1)
+      expect(result.data.first.status).to eq("connected")
+    end
+  end
+
+  describe "#retrieve" do
+    it "reads one connection" do
+      ApiCorpus.stub!("Connections_show")
+
+      result = connections.retrieve("conn_1")
+      expect(result.id).to eq("<PREFIX_ID:1>")
+      expect(result.application_id).to be_a(String)
     end
   end
 
   describe "#suspend" do
-    it "sends POST to suspend with reason" do
-      stub = stub_request(:post, "https://overturo.com/api/v1/connections/conn_1/suspend")
-             .with(body: '{"reason":"policy_violation"}')
-             .to_return(
-               status: 200,
-               body: '{"connection":{"id":"conn_1","status":"suspended"}}',
-               headers: { "Content-Type" => "application/json" }
-             )
+    it "sends POST to suspend" do
+      stub = ApiCorpus.stub!("Connections_suspend", with_body: true)
 
-      result = connections.suspend("conn_1", reason: "policy_violation")
+      result = connections.suspend("conn_1", ApiCorpus.request("Connections_suspend")["body"])
       expect(stub).to have_been_requested
       expect(result.status).to eq("suspended")
     end
@@ -37,16 +39,19 @@ RSpec.describe Overturo::Resources::Connect::Connections do
 
   describe "#unsuspend" do
     it "sends POST to unsuspend" do
-      stub = stub_request(:post, "https://overturo.com/api/v1/connections/conn_1/unsuspend")
-             .to_return(
-               status: 200,
-               body: '{"connection":{"id":"conn_1","status":"connected"}}',
-               headers: { "Content-Type" => "application/json" }
-             )
+      stub = ApiCorpus.stub!("Connections_unsuspend")
 
       result = connections.unsuspend("conn_1")
       expect(stub).to have_been_requested
       expect(result.status).to eq("connected")
+    end
+  end
+
+  describe "#delete" do
+    it "disconnects" do
+      ApiCorpus.stub!("Connections_destroy")
+
+      expect(connections.delete("conn_1").status).to eq("disconnected")
     end
   end
 

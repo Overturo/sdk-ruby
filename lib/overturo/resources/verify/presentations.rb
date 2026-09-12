@@ -11,7 +11,7 @@ module Overturo
         OBJECT_KEY = "presentation"
         LIST_KEY = "presentations"
 
-        custom_action :present, method: :post, returns: :raw
+        custom_action :present, method: :patch, returns: :raw
       end
     end
   end

@@ -6,24 +6,16 @@ RSpec.describe Overturo::Resources::Delegate::DisclosureReceipts do
   let(:client) { test_client }
 
   describe "#create" do
-    it "posts the closed mint payload and unwraps record_id + record" do
-      stub_api(:post, "/disclosure_receipts", status: 201, body: {
-                 "disclosure_receipt" => {
-                   "record_id" => "ct_disc1",
-                   "record" => { "record" => { "record_type" => "notice_record" } }
-                 }
-               })
+    it "posts the closed mint payload the API accepted and unwraps record_id + record" do
+      stub = ApiCorpus.stub!("DisclosureReceipts_create", with_body: true)
+      payload = ApiCorpus.request("DisclosureReceipts_create")["body"]
 
-      receipt = client.delegate_ns.disclosure_receipts.create(
-        flow_id: "acc_flow1", agent_id: "agt_1", disclosed_at: "2026-08-06T10:00:00Z", locale: "en"
-      )
+      receipt = client.delegate_ns.disclosure_receipts.create(payload.merge("locale" => "en"))
 
-      expect(receipt.record_id).to eq("ct_disc1")
+      expect(stub).to have_been_requested
+      expect(receipt.record_id).to eq("<PREFIX_ID:3>")
       expect(receipt.record["record"]["record_type"]).to eq("notice_record")
-      expect(a_request(:post, "https://overturo.com/api/v1/disclosure_receipts").with(
-               body: hash_including("flow_id" => "acc_flow1", "agent_id" => "agt_1",
-                                    "disclosed_at" => "2026-08-06T10:00:00Z", "locale" => "en")
-             )).to have_been_made
+      expect(receipt.record["extensions"]["agent_disclosures"].first["delivery_provenance"]).to eq("declared")
     end
 
     it "surfaces the mint's typed 422 shape ({error: message, code: code}) via error_code" do

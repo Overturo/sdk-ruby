@@ -7,15 +7,13 @@ RSpec.describe Overturo::Resources::Core::Me do
   let(:me) { client.core.me }
 
   describe "#retrieve" do
-    it "sends GET to /me with no ID parameter" do
-      stub = stub_api(:get, "/me", body: {
-                        "user" => { "id" => "usr_abc", "email" => "test@example.com", "name" => "Test User" }
-                      })
+    it "sends GET to /me with no ID parameter and reads the bare user document" do
+      stub = ApiCorpus.stub!("Me_show")
 
       result = me.retrieve
       expect(stub).to have_been_requested
-      expect(result.id).to eq("usr_abc")
-      expect(result.email).to eq("test@example.com")
+      expect(result.id).to eq(ApiCorpus.body("Me_show")["id"])
+      expect(result.name).to eq("Corpus Owner")
     end
 
     it "raises AuthenticationError for invalid API key" do

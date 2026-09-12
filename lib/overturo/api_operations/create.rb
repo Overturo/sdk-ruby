@@ -3,6 +3,8 @@
 module Overturo
   module ApiOperations
     module Create
+      def self.included(base) = base.declare_endpoint(:post, "<resource>")
+
       def create(params = {})
         response = http_client.post(resource_path, body: params)
         unwrap(response)

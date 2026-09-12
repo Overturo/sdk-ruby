@@ -3,6 +3,7 @@
 require "webmock/rspec"
 require "json"
 require_relative "../lib/overturo"
+require_relative "support/api_corpus"
 
 WebMock.disable_net_connect!
 

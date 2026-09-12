@@ -9,6 +9,11 @@ module Overturo
         include ApiOperations::NestedResource
 
         RESOURCE_PATH = "/applications"
+        # 193 D12 — endpoints built by explicit http_client calls below.
+        declare_endpoint :post, "<resource>/{application_id}/flows/{id}/activate"
+        declare_endpoint :post, "<resource>/{application_id}/flows/{id}/deprecate"
+        declare_endpoint :post, "<resource>/{application_id}/flows/{id}/archive"
+        declare_endpoint :post, "<resource>/{application_id}/flows/{id}/resolve_preview"
         OBJECT_KEY = "flow"
         LIST_KEY = "flows"
 

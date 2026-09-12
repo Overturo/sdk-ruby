@@ -8,7 +8,12 @@ module Overturo
       end
 
       module ClassMethods
-        def nested_resource(name, path:, object_key: nil, list_key: nil, operations: [])
+        # `list_key` names the JSON key the API wraps the collection in; the
+        # generated method is always `list_<plural name>` (`list_method` overrides).
+        def nested_resource(name, path:, object_key: nil, list_key: nil, list_method: nil, operations: [])
+          { create: [:post, "<resource>/{parent_id}/#{path}"], retrieve: [:get, "<resource>/{parent_id}/#{path}/{id}"],
+            list: [:get, "<resource>/{parent_id}/#{path}"], update: [:patch, "<resource>/{parent_id}/#{path}/{id}"],
+            delete: [:delete, "<resource>/{parent_id}/#{path}/{id}"] }.each { |op, (m, t)| declare_endpoint(m, t) if operations.include?(op) }
           operations.each do |op|
             case op
             when :create
@@ -22,7 +27,7 @@ module Overturo
                 unwrap(response, object_key || name.to_s)
               end
             when :list
-              define_method(:"list_#{list_key || "#{name}s"}") do |parent_id, params = {}|
+              define_method(:"list_#{list_method || "#{name}s"}") do |parent_id, params = {}|
                 lk = list_key || "#{name}s"
                 nested_path = "#{resource_path}/#{parent_id}/#{path}"
                 response = http_client.get(nested_path, params: params)

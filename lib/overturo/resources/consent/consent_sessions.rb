@@ -8,6 +8,8 @@ module Overturo
         include ApiOperations::Retrieve
 
         RESOURCE_PATH = "/consent_sessions"
+        # 193 D12 — endpoints built by explicit http_client calls below.
+        declare_endpoint :post, "<resource>/{id}/exchange"
         OBJECT_KEY = "consent_session"
         LIST_KEY = "consent_sessions"
 

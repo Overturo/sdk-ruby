@@ -7,61 +7,65 @@ RSpec.describe Overturo::Resources::Verify::Vouches do
   let(:vouches) { client.verify.vouches }
 
   describe "#create" do
-    it "creates a vouch" do
-      stub = stub_request(:post, "https://overturo.com/api/v1/vouches")
-             .with(body: '{"subject_id":"usr_2","claim":"identity_verified"}')
-             .to_return(
-               status: 201,
-               body: '{"vouch":{"id":"vch_1","subject_id":"usr_2","claim":"identity_verified"}}',
-               headers: { "Content-Type" => "application/json" }
-             )
+    it "creates a vouch, sending the payload the API accepted" do
+      stub = ApiCorpus.stub!("Vouches_create", with_body: true)
 
-      result = vouches.create(subject_id: "usr_2", claim: "identity_verified")
+      result = vouches.create(ApiCorpus.request("Vouches_create")["body"])
       expect(stub).to have_been_requested
-      expect(result.id).to eq("vch_1")
+      expect(result.id).to eq("<PREFIX_ID:3>")
+      expect(result.status).to eq("active")
     end
   end
 
   describe "#list" do
     it "lists vouches" do
-      stub_api(:get, "/vouches", body: {
-                 "vouches" => [{ "id" => "vch_1" }, { "id" => "vch_2" }],
-                 "pagination" => { "page" => 1, "per_page" => 25, "total" => 2 }
-               })
+      ApiCorpus.stub!("Vouches_index")
 
       result = vouches.list
       expect(result).to be_a(Overturo::ListObject)
-      expect(result.data.size).to eq(2)
+      expect(result.data.size).to eq(1)
+    end
+  end
+
+  describe "#retrieve" do
+    it "reads one vouch with its public policy id" do
+      ApiCorpus.stub!("Vouches_show")
+
+      result = vouches.retrieve("vch_1")
+      expect(result.id).to eq("<PREFIX_ID:1>")
+      expect(result.policy_id).to be_a(String)
+    end
+
+    it "maps the documented 404 envelope to NotFoundError" do
+      ApiCorpus.stub!("Vouches_show", step: "404")
+
+      expect { vouches.retrieve("vch_missing") }.to raise_error(Overturo::NotFoundError)
+    end
+  end
+
+  describe "#delete" do
+    it "revokes" do
+      ApiCorpus.stub!("Vouches_destroy")
+
+      expect(vouches.delete("vch_1").status).to eq("revoked")
     end
   end
 
   describe "#received" do
     it "sends GET to /vouches/received and returns a ListObject" do
-      stub = stub_request(:get, "https://overturo.com/api/v1/vouches/received")
-             .to_return(
-               status: 200,
-               body: '{"vouches":[{"id":"vch_3","from":"usr_2"},{"id":"vch_4","from":"usr_3"}],"pagination":{"page":1,"per_page":25,"total":2}}',
-               headers: { "Content-Type" => "application/json" }
-             )
+      stub = ApiCorpus.stub!("Vouches_received")
 
       result = vouches.received
       expect(stub).to have_been_requested
       expect(result).to be_a(Overturo::ListObject)
-      expect(result.data.size).to eq(2)
-      expect(result.data.first.id).to eq("vch_3")
+      expect(result.data.first.id).to eq("<PREFIX_ID:1>")
     end
 
     it "passes query params to received" do
-      stub = stub_request(:get, "https://overturo.com/api/v1/vouches/received?claim=identity_verified")
-             .to_return(
-               status: 200,
-               body: '{"vouches":[{"id":"vch_3"}],"pagination":{"page":1,"per_page":25,"total":1}}',
-               headers: { "Content-Type" => "application/json" }
-             )
+      stub = ApiCorpus.stub!("Vouches_received")
 
-      result = vouches.received(claim: "identity_verified")
-      expect(stub).to have_been_requested
-      expect(result.data.size).to eq(1)
+      vouches.received(claim: "identity_verified")
+      expect(stub.with(query: { claim: "identity_verified" })).to have_been_requested
     end
   end
 end

@@ -1,5 +1,5 @@
 > **Release mirror.** This repository is a read-only snapshot of
-> `overturo` 0.5.1, published from Overturo's main
+> `overturo` 0.5.2, published from Overturo's main
 > development repository. Issues and pull requests are welcome here; accepted
 > changes are ported upstream and appear in the next release snapshot.
 > Security reports: see [SECURITY.md](./SECURITY.md).
@@ -145,7 +145,7 @@ client.agree.agreements.accept("agr_1")
 client.agree.agreements.counter("agr_1", terms: "revised terms")
 
 # Quorum decisions
-client.agree.decisions.vote("dec_1", choice: "approve", comment: "Looks good")
+client.agree.quorum_requests.vote("qreq_1", vote: "approve", comment: "Looks good")
 
 # Multi-party collaboration
 client.agree.collaborations.invite("collab_1", email: "partner@example.com", role: "contributor")
@@ -327,6 +327,24 @@ OVERTURO = Overturo::Client.new(api_key: ENV["OVERTURO_API_KEY"])
 # Anywhere in your app
 OVERTURO.connect.applications.list
 ```
+
+## Contract and testing
+
+This client is written against Overturo's published OpenAPI document, kept at
+<https://github.com/overturo/openapi>. When the client and the API disagree, the
+document is the authority; a change to it is a change to this client.
+
+The test suite stubs recorded operations from the shared API response corpus
+(<https://github.com/overturo/conformance>, `api_responses/`), vendored under
+`spec/fixtures/api_responses`. Each recording was made against the real API and checked against
+the published document before it was committed, so a passing suite means the
+client parses what the API actually sends — not what a test author remembered.
+Identifiers, timestamps and tokens in the recordings are placeholders
+(`<PREFIX_ID:1>`, `2026-01-01T00:00:00Z`, `<TOKEN>`); the corpus README documents the
+grammar.
+
+Run the suite with `bundle exec rspec`. When you add a test for a recorded operation, stub it
+from the recording (`ApiCorpus.stub!("Vouches_show")`) rather than writing the response by hand.
 
 ## License
 

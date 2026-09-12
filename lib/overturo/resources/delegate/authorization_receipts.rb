@@ -10,6 +10,8 @@ module Overturo
       # indistinguishable — don't try to disambiguate client-side.
       class AuthorizationReceipts < ApiResource
         RESOURCE_PATH = "/authorization_receipts"
+        # 193 D12 — endpoints built by explicit http_client calls below.
+        declare_endpoint :get, "<resource>/{id}"
         OBJECT_KEY = "authorization_receipt"
 
         # flavor:

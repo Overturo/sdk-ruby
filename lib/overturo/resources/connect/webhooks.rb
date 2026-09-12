@@ -7,13 +7,13 @@ module Overturo
         include ApiOperations::NestedResource
 
         RESOURCE_PATH = "/applications"
-        OBJECT_KEY = "webhook"
-        LIST_KEY = "webhooks"
+        OBJECT_KEY = "webhook_subscription"
+        LIST_KEY = "webhook_subscriptions"
 
         nested_resource :webhook,
                         path: "webhooks",
-                        object_key: "webhook",
-                        list_key: "webhooks",
+                        object_key: "webhook_subscription",
+                        list_key: "webhook_subscriptions",
                         operations: %i[create retrieve list update delete]
 
         # Public API aliases: take (application_id, ...) as first arg

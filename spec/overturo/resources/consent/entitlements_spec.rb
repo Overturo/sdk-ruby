@@ -20,9 +20,9 @@ RSpec.describe Overturo::Resources::Consent::Entitlements do
   end
 
   describe "#verify" do
-    it "sends POST to verify and returns raw response (not unwrapped by key)" do
-      stub = stub_request(:post, "https://overturo.com/api/v1/entitlements/ent_1/verify")
-             .with(body: '{"scope":"read:profile"}')
+    it "sends GET to verify (the API declares the verify action as a read) and returns raw response" do
+      stub = stub_request(:get, "https://overturo.com/api/v1/entitlements/ent_1/verify")
+             .with(query: { "scope" => "read:profile" })
              .to_return(
                status: 200,
                body: '{"valid":true,"scopes":["read:profile"],"expires_at":"2026-12-31T00:00:00Z"}',

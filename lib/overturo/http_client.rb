@@ -118,7 +118,7 @@ module Overturo
 
       return json || {} if status >= 200 && status < 300
 
-      message = json.is_a?(Hash) ? (json["error"] || body) : body
+      message = error_message(json, body)
       error_class = ERROR_MAP[status] || (status >= 500 ? ApiError : Error)
 
       raise error_class.new(
@@ -127,6 +127,17 @@ module Overturo
         http_body: body,
         json_body: json
       )
+    end
+
+    # `{error: {code, message}}` reads as "code: message"; a string error or a
+    # non-JSON body is passed through.
+    def error_message(json, body)
+      return body unless json.is_a?(Hash)
+
+      error = json["error"]
+      return [error["code"], error["message"]].compact.join(": ") if error.is_a?(Hash)
+
+      error || body
     end
 
     def parse_json(body)

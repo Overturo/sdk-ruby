@@ -1,0 +1,635 @@
+{
+  "sdk": "overturo-ruby",
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/api/v1/accounts",
+      "resource": "Overturo::Resources::Core::Accounts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agent_identities",
+      "resource": "Overturo::Resources::Delegate::AgentIdentities"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agent_identities",
+      "resource": "Overturo::Resources::Delegate::AgentIdentities"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/agent_identities/{id}",
+      "resource": "Overturo::Resources::Delegate::AgentIdentities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agent_identities/{id}",
+      "resource": "Overturo::Resources::Delegate::AgentIdentities"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/agent_identities/{id}",
+      "resource": "Overturo::Resources::Delegate::AgentIdentities"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agent_identities/{id}/delegate",
+      "resource": "Overturo::Resources::Delegate::AgentIdentities"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agent_identities/{id}/reactivate",
+      "resource": "Overturo::Resources::Delegate::AgentIdentities"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agent_identities/{id}/suspend",
+      "resource": "Overturo::Resources::Delegate::AgentIdentities"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agreements",
+      "resource": "Overturo::Resources::Agree::Agreements"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agreements/propose",
+      "resource": "Overturo::Resources::Agree::Agreements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/agreements/{id}",
+      "resource": "Overturo::Resources::Agree::Agreements"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agreements/{id}/accept",
+      "resource": "Overturo::Resources::Agree::Agreements"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/agreements/{id}/counter",
+      "resource": "Overturo::Resources::Agree::Agreements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/anchors/{id}",
+      "resource": "Overturo::Resources::Comply::Anchors"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/anchors/{id}/export",
+      "resource": "Overturo::Resources::Comply::Anchors"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/anchors/{id}/receipts",
+      "resource": "Overturo::Resources::Comply::Anchors"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/applications/{application_id}/flows/{id}/activate",
+      "resource": "Overturo::Resources::Connect::Flows"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/applications/{application_id}/flows/{id}/archive",
+      "resource": "Overturo::Resources::Connect::Flows"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/applications/{application_id}/flows/{id}/deprecate",
+      "resource": "Overturo::Resources::Connect::Flows"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/applications/{application_id}/flows/{id}/resolve_preview",
+      "resource": "Overturo::Resources::Connect::Flows"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/applications/{application_id}/portability/confirm_export",
+      "resource": "Overturo::Resources::Connect::Portability"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/applications/{application_id}/portability/confirm_import",
+      "resource": "Overturo::Resources::Connect::Portability"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/applications/{application_id}/portability/formats",
+      "resource": "Overturo::Resources::Connect::Portability"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/applications/{id}/publish",
+      "resource": "Overturo::Resources::Connect::Applications"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/applications/{id}/unpublish",
+      "resource": "Overturo::Resources::Connect::Applications"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/applications/{parent_id}/flows",
+      "resource": "Overturo::Resources::Connect::Flows"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/applications/{parent_id}/flows",
+      "resource": "Overturo::Resources::Connect::Flows"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/applications/{parent_id}/flows/{id}",
+      "resource": "Overturo::Resources::Connect::Flows"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/applications/{parent_id}/flows/{id}",
+      "resource": "Overturo::Resources::Connect::Flows"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/applications/{parent_id}/flows/{id}",
+      "resource": "Overturo::Resources::Connect::Flows"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/applications/{parent_id}/webhooks",
+      "resource": "Overturo::Resources::Connect::Webhooks"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/applications/{parent_id}/webhooks",
+      "resource": "Overturo::Resources::Connect::Webhooks"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/applications/{parent_id}/webhooks/{id}",
+      "resource": "Overturo::Resources::Connect::Webhooks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/applications/{parent_id}/webhooks/{id}",
+      "resource": "Overturo::Resources::Connect::Webhooks"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/applications/{parent_id}/webhooks/{id}",
+      "resource": "Overturo::Resources::Connect::Webhooks"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/authorization_receipts/{id}",
+      "resource": "Overturo::Resources::Delegate::AuthorizationReceipts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/clean_rooms",
+      "resource": "Overturo::Resources::Comply::CleanRooms"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/clean_rooms",
+      "resource": "Overturo::Resources::Comply::CleanRooms"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/clean_rooms/{id}",
+      "resource": "Overturo::Resources::Comply::CleanRooms"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/clean_rooms/{id}",
+      "resource": "Overturo::Resources::Comply::CleanRooms"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/clean_rooms/{id}/approve",
+      "resource": "Overturo::Resources::Comply::CleanRooms"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/clean_rooms/{id}/queries",
+      "resource": "Overturo::Resources::Comply::CleanRooms"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/clean_rooms/{id}/queries",
+      "resource": "Overturo::Resources::Comply::CleanRooms"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/clean_rooms/{id}/queries/{query_id}",
+      "resource": "Overturo::Resources::Comply::CleanRooms"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/collaborations",
+      "resource": "Overturo::Resources::Agree::Collaborations"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/collaborations",
+      "resource": "Overturo::Resources::Agree::Collaborations"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/collaborations/{id}",
+      "resource": "Overturo::Resources::Agree::Collaborations"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/collaborations/{id}/invite",
+      "resource": "Overturo::Resources::Agree::Collaborations"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/collaborations/{id}/sign",
+      "resource": "Overturo::Resources::Agree::Collaborations"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/connections",
+      "resource": "Overturo::Resources::Connect::Connections"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/connections/{id}",
+      "resource": "Overturo::Resources::Connect::Connections"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/connections/{id}",
+      "resource": "Overturo::Resources::Connect::Connections"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/connections/{id}/suspend",
+      "resource": "Overturo::Resources::Connect::Connections"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/connections/{id}/unsuspend",
+      "resource": "Overturo::Resources::Connect::Connections"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/consent_sessions",
+      "resource": "Overturo::Resources::Consent::ConsentSessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/consent_sessions/{id}",
+      "resource": "Overturo::Resources::Consent::ConsentSessions"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/consent_sessions/{id}/authorize",
+      "resource": "Overturo::Resources::Consent::ConsentSessions"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/consent_sessions/{id}/exchange",
+      "resource": "Overturo::Resources::Consent::ConsentSessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/consent_sessions/{id}/verify",
+      "resource": "Overturo::Resources::Consent::ConsentSessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/credentials",
+      "resource": "Overturo::Resources::Verify::Credentials"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/credentials",
+      "resource": "Overturo::Resources::Verify::Credentials"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/credentials/{id}",
+      "resource": "Overturo::Resources::Verify::Credentials"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/credentials/{id}",
+      "resource": "Overturo::Resources::Verify::Credentials"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/credentials/{id}/wallet_pass",
+      "resource": "Overturo::Resources::Verify::Credentials"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/data_licenses",
+      "resource": "Overturo::Resources::Protect::DataLicenses"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/data_licenses",
+      "resource": "Overturo::Resources::Protect::DataLicenses"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/data_licenses/{id}",
+      "resource": "Overturo::Resources::Protect::DataLicenses"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/data_licenses/{id}/terminate",
+      "resource": "Overturo::Resources::Protect::DataLicenses"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/data_requests",
+      "resource": "Overturo::Resources::Protect::DataRequests"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/data_requests",
+      "resource": "Overturo::Resources::Protect::DataRequests"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/data_requests/{id}",
+      "resource": "Overturo::Resources::Protect::DataRequests"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/decisions/flows/{flow_id}/disclosures",
+      "resource": "Overturo::Resources::Consent::Decisions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/delegations",
+      "resource": "Overturo::Resources::Delegate::Delegations"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/delegations",
+      "resource": "Overturo::Resources::Delegate::Delegations"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/delegations/{id}",
+      "resource": "Overturo::Resources::Delegate::Delegations"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/delegations/{id}",
+      "resource": "Overturo::Resources::Delegate::Delegations"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/delegations/{id}/revoke",
+      "resource": "Overturo::Resources::Delegate::Delegations"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/disclosure_receipts",
+      "resource": "Overturo::Resources::Delegate::DisclosureReceipts"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/entitlements",
+      "resource": "Overturo::Resources::Consent::Entitlements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/entitlements/{id}",
+      "resource": "Overturo::Resources::Consent::Entitlements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/entitlements/{id}/verify",
+      "resource": "Overturo::Resources::Consent::Entitlements"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/evidence_packages/{id}",
+      "resource": "Overturo::Resources::Comply::EvidencePackages"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/me",
+      "resource": "Overturo::Resources::Core::Me"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/policies",
+      "resource": "Overturo::Resources::Protect::Policies"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/policies",
+      "resource": "Overturo::Resources::Protect::Policies"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/policies/{id}",
+      "resource": "Overturo::Resources::Protect::Policies"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/policies/{id}",
+      "resource": "Overturo::Resources::Protect::Policies"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/policies/{id}",
+      "resource": "Overturo::Resources::Protect::Policies"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/policies/{id}/activate",
+      "resource": "Overturo::Resources::Protect::Policies"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/policies/{id}/revoke",
+      "resource": "Overturo::Resources::Protect::Policies"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/policies/{id}/share",
+      "resource": "Overturo::Resources::Protect::Policies"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/presentations",
+      "resource": "Overturo::Resources::Verify::Presentations"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/presentations/{id}",
+      "resource": "Overturo::Resources::Verify::Presentations"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/presentations/{id}/present",
+      "resource": "Overturo::Resources::Verify::Presentations"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/quorum_requests",
+      "resource": "Overturo::Resources::Agree::QuorumRequests"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/quorum_requests",
+      "resource": "Overturo::Resources::Agree::QuorumRequests"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/quorum_requests/{id}",
+      "resource": "Overturo::Resources::Agree::QuorumRequests"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/quorum_requests/{id}/vote",
+      "resource": "Overturo::Resources::Agree::QuorumRequests"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/residency_posture",
+      "resource": "Overturo::Resources::Comply::ResidencyPosture"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/residency_posture/evidence_package",
+      "resource": "Overturo::Resources::Comply::ResidencyPosture"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/security_event_streams",
+      "resource": "Overturo::Resources::Delegate::SecurityEventStreams"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/security_event_streams",
+      "resource": "Overturo::Resources::Delegate::SecurityEventStreams"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/security_event_streams/{id}",
+      "resource": "Overturo::Resources::Delegate::SecurityEventStreams"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/security_event_streams/{id}",
+      "resource": "Overturo::Resources::Delegate::SecurityEventStreams"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/security_event_streams/{id}",
+      "resource": "Overturo::Resources::Delegate::SecurityEventStreams"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/security_event_streams/{id}/poll",
+      "resource": "Overturo::Resources::Delegate::SecurityEventStreams"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/security_event_streams/{id}/verify",
+      "resource": "Overturo::Resources::Delegate::SecurityEventStreams"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/transfer_register",
+      "resource": "Overturo::Resources::Comply::TransferRegister"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/transfer_register/evidence_package",
+      "resource": "Overturo::Resources::Comply::TransferRegister"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/transfers",
+      "resource": "Overturo::Resources::Protect::Transfers"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/transfers",
+      "resource": "Overturo::Resources::Protect::Transfers"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/transfers/{id}",
+      "resource": "Overturo::Resources::Protect::Transfers"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/transfers/{id}/cancel",
+      "resource": "Overturo::Resources::Protect::Transfers"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/trust_levels",
+      "resource": "Overturo::Resources::Consent::TrustLevels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/trust_levels/{id}",
+      "resource": "Overturo::Resources::Consent::TrustLevels"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/trust_levels/{id}/trigger",
+      "resource": "Overturo::Resources::Consent::TrustLevels"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/trust_scores",
+      "resource": "Overturo::Resources::Verify::TrustScores"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/trust_scores/query",
+      "resource": "Overturo::Resources::Verify::TrustScores"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/verification_sessions",
+      "resource": "Overturo::Resources::Verify::VerificationSessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/verification_sessions/{id}",
+      "resource": "Overturo::Resources::Verify::VerificationSessions"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vouches",
+      "resource": "Overturo::Resources::Verify::Vouches"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/vouches",
+      "resource": "Overturo::Resources::Verify::Vouches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vouches/received",
+      "resource": "Overturo::Resources::Verify::Vouches"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/vouches/{id}",
+      "resource": "Overturo::Resources::Verify::Vouches"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/vouches/{id}",
+      "resource": "Overturo::Resources::Verify::Vouches"
+    }
+  ]
+}

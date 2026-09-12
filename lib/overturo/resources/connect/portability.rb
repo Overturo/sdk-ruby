@@ -11,6 +11,10 @@ module Overturo
       # argument and resolves under /applications/:application_id/portability.
       class Portability < ApiResource
         RESOURCE_PATH = "/applications"
+        # 193 D12 — endpoints built by explicit http_client calls below.
+        declare_endpoint :get, "<resource>/{application_id}/portability/formats"
+        declare_endpoint :post, "<resource>/{application_id}/portability/confirm_export"
+        declare_endpoint :post, "<resource>/{application_id}/portability/confirm_import"
 
         # GET /applications/:application_id/portability/formats — the supported
         # portability formats.

@@ -7,16 +7,15 @@ RSpec.describe Overturo::Resources::Core::Accounts do
   let(:accounts) { client.core.accounts }
 
   describe "#list" do
-    it "lists accounts with pagination" do
-      stub_api(:get, "/accounts", body: {
-                 "accounts" => [{ "id" => "acct_1" }, { "id" => "acct_2" }],
-                 "pagination" => { "page" => 1, "per_page" => 25, "total" => 2 }
-               })
+    it "lists the caller's accounts (the API renders a bare collection)" do
+      stub = ApiCorpus.stub!("Accounts_index")
 
       result = accounts.list
+      expect(stub).to have_been_requested
       expect(result).to be_a(Overturo::ListObject)
-      expect(result.data.size).to eq(2)
-      expect(result.pagination["total"]).to eq(2)
+      expect(result.data.size).to eq(ApiCorpus.body("Accounts_index").size)
+      expect(result.data.first.name).to eq("Corpus Owner")
+      expect(result.more?).to be(false)
     end
   end
 

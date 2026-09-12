@@ -25,14 +25,20 @@ RSpec.describe Overturo::Resources::Comply::CleanRooms do
 
   describe "#list" do
     it "lists clean rooms" do
-      stub_api(:get, "/clean_rooms", body: {
-                 "clean_rooms" => [{ "id" => "cr_1" }, { "id" => "cr_2" }],
-                 "pagination" => { "page" => 1, "per_page" => 25, "total" => 2 }
-               })
+      ApiCorpus.stub!("CleanRooms_index")
 
       result = clean_rooms.list
       expect(result).to be_a(Overturo::ListObject)
-      expect(result.data.size).to eq(2)
+      expect(result.data.size).to eq(1)
+      expect(result.data.first.status).to eq("active")
+    end
+  end
+
+  describe "#retrieve" do
+    it "reads one clean room" do
+      ApiCorpus.stub!("CleanRooms_show")
+
+      expect(clean_rooms.retrieve("cr_1").status).to eq("active")
     end
   end
 

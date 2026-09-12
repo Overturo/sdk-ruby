@@ -16,10 +16,15 @@ module Overturo
     # "reason" => <message>}, the disclosure mint uses {"error" =>
     # <message>, "code" => "<code>"}. `code` wins when present; the two
     # shapes are the server's contract, surfaced as-is.
+    # The API's error envelope is `{error: {code, message}}`; some endpoints
+    # still answer `{error: "<code or message>", code?: "<code>"}`.
     def error_code
       return nil unless json_body.is_a?(Hash)
 
-      json_body["code"] || json_body["error"]
+      error = json_body["error"]
+      return error["code"] if error.is_a?(Hash)
+
+      json_body["code"] || error
     end
   end
 

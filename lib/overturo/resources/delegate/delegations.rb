@@ -15,8 +15,10 @@ module Overturo
         include ApiOperations::Update
 
         RESOURCE_PATH = "/delegations"
-        OBJECT_KEY = "delegation"
-        LIST_KEY = "delegations"
+        # 193 D12 — endpoints built by explicit http_client calls below.
+        declare_endpoint :delete, "<resource>/{id}/revoke"
+        OBJECT_KEY = "delegation_grant"
+        LIST_KEY = "delegation_grants"
 
         # Revoke uses DELETE on a member sub-path. `custom_action` only knows
         # :get and :post, so this is written explicitly. `http_client.delete`

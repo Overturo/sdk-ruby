@@ -8,6 +8,9 @@ module Overturo
       # assurance status. Export a signed Proof of Residency. Singleton (no id).
       class ResidencyPosture < ApiResource
         RESOURCE_PATH = "/residency_posture"
+        # 193 D12 — endpoints built by explicit http_client calls below.
+        declare_endpoint :get, "<resource>"
+        declare_endpoint :post, "<resource>/evidence_package"
         OBJECT_KEY = "residency_posture"
 
         # GET /residency_posture — the per-country posture + assurance status.

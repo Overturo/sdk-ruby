@@ -11,7 +11,7 @@ module Overturo
         OBJECT_KEY = "entitlement"
         LIST_KEY = "entitlements"
 
-        custom_action :verify, method: :post, returns: :raw
+        custom_action :verify, method: :get, returns: :raw
       end
     end
   end
