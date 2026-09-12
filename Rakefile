@@ -12,7 +12,7 @@ rescue LoadError
 end
 
 namespace :endpoints do
-  desc "Write endpoints.json (the gem's endpoint manifest — "
+  desc "Write endpoints.json, the gem's endpoint manifest"
   task :write do
     require "json"
     require_relative "lib/overturo"

@@ -1,10 +1,12 @@
 > **Release mirror.** This repository is a read-only snapshot of
-> `overturo` 0.5.2, published from Overturo's main
+> `overturo` 0.5.3, published from Overturo's main
 > development repository. Issues and pull requests are welcome here; accepted
 > changes are ported upstream and appear in the next release snapshot.
 > Security reports: see [SECURITY.md](./SECURITY.md).
 
 # Overturo Ruby SDK
+
+**Documentation:** <https://overturo.com/developers/sdks> · **API reference:** <https://overturo.com/developers/openapi>
 
 Ruby client for the [Overturo](https://overturo.com) personal data identity platform API.
 
@@ -331,7 +333,8 @@ OVERTURO.connect.applications.list
 ## Contract and testing
 
 This client is written against Overturo's published OpenAPI document, kept at
-<https://github.com/overturo/openapi>. When the client and the API disagree, the
+<https://github.com/overturo/openapi> and rendered at
+<https://overturo.com/developers/openapi>, where each operation lists the SDKs that reach it. When the client and the API disagree, the
 document is the authority; a change to it is a change to this client.
 
 The test suite stubs recorded operations from the shared API response corpus

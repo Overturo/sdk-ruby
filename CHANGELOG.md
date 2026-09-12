@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.3] - 2026-09-12
+
+### Changed
+
+- The README links the public documentation and the rendered API reference at overturo.com/developers; the vendored API response corpus is re-recorded against the published document, whose operations now list the SDKs that reach them (`x-overturo-sdks`).
+- The discovery spec reads a vendored copy of the shared discovery fixture (`spec/fixtures/discovery/`) when the shared corpus is not present, so the published gem's suite is self-contained.
+
 ## [0.5.2] - 2026-09-11
 
 ### Fixed

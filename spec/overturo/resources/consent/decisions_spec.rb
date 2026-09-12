@@ -12,7 +12,9 @@ RSpec.describe Overturo::Resources::Consent::Decisions do
   let(:flow_id) { "flw_test_discovery" }
   let(:disclosures_url) { "https://overturo.com/api/v1/decisions/flows/#{flow_id}/disclosures" }
   let(:fixture_body) do
-    File.read(File.expand_path("../../../../../shared/conformance/discovery/flow_disclosures.json", __dir__))
+    # The shared fixture when this gem sits next to it; the vendored copy otherwise.
+    shared = File.expand_path("../../../../../shared/conformance/discovery/flow_disclosures.json", __dir__)
+    File.read(File.exist?(shared) ? shared : File.expand_path("../../../fixtures/discovery/flow_disclosures.json", __dir__))
   end
 
   describe "#discover" do
