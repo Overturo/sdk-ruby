@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.4] - 2026-10-09
+
+### Changed
+
+- Vendored discovery corpus refreshed to the shared corpus 1.0.3: the canonical flow's `care_reminders` purpose now runs on legitimate interest with the opt-out (right to object) mechanism, and its choices step is titled "Your Choices"; the discovery test follows. Tests only — the published package is unchanged.
+
 ## [0.5.3] - 2026-09-12
 
 ### Changed

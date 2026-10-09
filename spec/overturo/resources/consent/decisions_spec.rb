@@ -33,7 +33,7 @@ RSpec.describe Overturo::Resources::Consent::Decisions do
       expect(result.locale.fallback).to eq("en")
       purpose = result.purposes.find { |p| p.name == "care_reminders" }
       expect(purpose.mechanism).to eq("opt_out")
-      expect(purpose.legal_basis).to eq("consent")
+      expect(purpose.legal_basis).to eq("legitimate_interest")
       expect(result.fields.map(&:completed_by)).to include("principal")
       expect(result.outcomes).to eq(%w[granted denied])
     end
