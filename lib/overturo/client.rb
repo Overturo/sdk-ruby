@@ -98,6 +98,12 @@ module Overturo
     def portability
       resource(Resources::Connect::Portability)
     end
+
+    # Meetings — the unit of record for meeting consent (window, platform,
+    # cancellation, participants with their decisions).
+    def meeting_consents
+      resource(Resources::Connect::MeetingConsents)
+    end
   end
 
   class ConsentSurface < SurfaceProxy

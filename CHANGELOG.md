@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.0] - 2026-10-10
+
+### Added
+
+- `client.connect.meeting_consents` — meetings as the unit of record for the Meetings solution: `create` (title, start, duration, platform, platform meeting id; answers the meeting-named consent link), `list`, `retrieve`, `update` (rename / reschedule), `participants` (each person's decision per purpose) and `cancel`. Every test runs against recordings the real API produced.
+
 ## [0.5.4] - 2026-10-09
 
 ### Changed

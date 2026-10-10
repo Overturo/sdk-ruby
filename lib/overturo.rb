@@ -26,6 +26,7 @@ require_relative "overturo/resources/connect/webhooks"
 require_relative "overturo/resources/connect/connections"
 require_relative "overturo/resources/connect/flows"
 require_relative "overturo/resources/connect/portability"
+require_relative "overturo/resources/connect/meeting_consents"
 
 # Resources — Consent
 require_relative "overturo/resources/consent/consent_sessions"

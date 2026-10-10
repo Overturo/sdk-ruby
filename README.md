@@ -1,5 +1,5 @@
 > **Release mirror.** This repository is a read-only snapshot of
-> `overturo` 0.5.4, published from Overturo's main
+> `overturo` 0.6.0, published from Overturo's main
 > development repository. Issues and pull requests are welcome here; accepted
 > changes are ported upstream and appear in the next release snapshot.
 > Security reports: see [SECURITY.md](./SECURITY.md).
