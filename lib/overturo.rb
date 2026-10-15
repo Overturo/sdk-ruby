@@ -31,6 +31,7 @@ require_relative "overturo/resources/connect/meeting_consents"
 # Resources — Consent
 require_relative "overturo/resources/consent/consent_sessions"
 require_relative "overturo/resources/consent/decisions"
+require_relative "overturo/resources/consent/consent_records"
 require_relative "overturo/resources/consent/entitlements"
 require_relative "overturo/resources/consent/trust_levels"
 

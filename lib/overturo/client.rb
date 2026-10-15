@@ -116,6 +116,11 @@ module Overturo
       resource(Resources::Consent::Decisions)
     end
 
+    # 201 — consent records captured outside Overturo's surfaces.
+    def consent_records
+      resource(Resources::Consent::ConsentRecords)
+    end
+
     def entitlements
       resource(Resources::Consent::Entitlements)
     end

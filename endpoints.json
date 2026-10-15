@@ -87,6 +87,11 @@
       "resource": "Overturo::Resources::Comply::Anchors"
     },
     {
+      "method": "GET",
+      "path": "/api/v1/applications/{application_id}/consent_status",
+      "resource": "Overturo::Resources::Consent::ConsentRecords"
+    },
+    {
       "method": "POST",
       "path": "/api/v1/applications/{application_id}/flows/{id}/activate",
       "resource": "Overturo::Resources::Connect::Flows"
@@ -308,6 +313,26 @@
     },
     {
       "method": "POST",
+      "path": "/api/v1/consent_records",
+      "resource": "Overturo::Resources::Consent::ConsentRecords"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/consent_records/imports",
+      "resource": "Overturo::Resources::Consent::ConsentRecords"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/consent_records/imports/{import_id}",
+      "resource": "Overturo::Resources::Consent::ConsentRecords"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/consent_records/{id}",
+      "resource": "Overturo::Resources::Consent::ConsentRecords"
+    },
+    {
+      "method": "POST",
       "path": "/api/v1/consent_sessions",
       "resource": "Overturo::Resources::Consent::ConsentSessions"
     },
@@ -394,6 +419,11 @@
     {
       "method": "GET",
       "path": "/api/v1/decisions/flows/{flow_id}/disclosures",
+      "resource": "Overturo::Resources::Consent::Decisions"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/decisions/{id}/authorize",
       "resource": "Overturo::Resources::Consent::Decisions"
     },
     {

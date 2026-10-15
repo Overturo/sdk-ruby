@@ -87,4 +87,19 @@ RSpec.describe Overturo::Resources::Consent::Decisions do
       expect(stub).to have_been_requested
     end
   end
+
+  # 201 — the capture commit, stubbed from the recorded exchange.
+  describe "#authorize" do
+    it "commits a capture token with the application credential and returns the decision with its record" do
+      stub = ApiCorpus.stub!("Decisions_authorize")
+
+      result = decisions.authorize("tok_capture_abc123", subject: { email: "person@example.com", external_id: "crm-42" })
+
+      expect(stub).to have_been_requested
+      body = ApiCorpus.body("Decisions_authorize")["decision"]
+      expect(result.status).to eq(body["status"])
+      expect(result.record_id).to eq(body["record_id"])
+      expect(result.channel).to eq("form_capture")
+    end
+  end
 end

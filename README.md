@@ -1,5 +1,5 @@
 > **Release mirror.** This repository is a read-only snapshot of
-> `overturo` 0.6.0, published from Overturo's main
+> `overturo` 0.7.0, published from Overturo's main
 > development repository. Issues and pull requests are welcome here; accepted
 > changes are ported upstream and appear in the next release snapshot.
 > Security reports: see [SECURITY.md](./SECURITY.md).
@@ -76,13 +76,13 @@ client = Overturo::Client.new(
 
 ## Surfaces & Resources
 
-The API is organized into 8 surfaces with 28 resources:
+The API is organized into 8 surfaces:
 
 | Surface | Accessor | Resources |
 |---------|----------|-----------|
 | **Core** | `client.core` | `me`, `accounts` |
 | **Connect** | `client.connect` | `applications`, `webhooks`, `connections`, `trust_pairings`, `flows` |
-| **Consent** | `client.consent` | `consent_sessions`, `entitlements`, `trust_levels` |
+| **Consent** | `client.consent` | `consent_sessions`, `decisions`, `consent_records`, `entitlements`, `trust_levels` |
 | **Verify** | `client.verify` | `credentials`, `verification_sessions`, `presentations`, `trust_scores`, `vouches` |
 | **Protect** | `client.protect` | `policies`, `data_requests`, `transfers`, `data_licenses` |
 | **Agree** | `client.agree` | `agreements`, `decisions`, `collaborations` |
@@ -132,6 +132,15 @@ client.connect.connections.unsuspend("conn_1")
 result = client.consent.entitlements.verify("ent_1", scope: "read:profile")
 result.valid    # => true
 result.scopes   # => ["read:profile"]
+
+# Consent records captured outside Overturo's surfaces
+record = client.consent.consent_records.create(flow_id: "flw_1", subject: { email: "ana@example.com" },
+                                               decisions: { marketing_email: { decision: "granted" } },
+                                               idempotency_key: "signup-1842")
+client.consent.decisions.authorize("cap_token", subject: { email: "ana@example.com" })  # commit a form's capture token
+batch = client.consent.consent_records.import(flow_id: "flw_1", records: rows, dry_run: true)
+client.consent.consent_records.import_status(batch.id)
+client.consent.consent_records.status(application_id: "app_1", email: "ana@example.com")
 
 # Trust score queries
 score = client.verify.trust_scores.query(subject: "usr_1", context: "data_sharing")

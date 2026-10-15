@@ -18,8 +18,16 @@ module Overturo
       # (Overturo::NotFoundError).
       class Decisions < ApiResource
         RESOURCE_PATH = "/decisions"
+        OBJECT_KEY = "decision"
         # 193 D12 — endpoints built by explicit http_client calls below.
         declare_endpoint :get, "<resource>/flows/{flow_id}/disclosures"
+
+        # 201 — commit a capture: your server received the capture token with the
+        # form submission and commits it with the application credential
+        # (`authorize(token, subject: {email:, external_id:}, suppress_receipt: false)`).
+        # The result carries `status`, `record_id` and the receipt `channel`. A
+        # publishable key cannot commit (403 publishable_key_cannot_commit).
+        custom_action :authorize, method: :post
 
         def discover(flow_id, publishable_key:, locale: nil)
           raise ArgumentError, "flow_id is required" if flow_id.nil? || flow_id.to_s.empty?

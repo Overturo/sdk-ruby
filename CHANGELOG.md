@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.7.0] - 2026-10-15
+
+### Added
+
+- `client.consent.consent_records` — consents captured outside Overturo's surfaces: `create` (capture and commit in one call, idempotent on your key), `retrieve`, `import` (consents you already hold, up to 5000 rows per batch, with `dry_run:` and `send_receipts:`), `import_status` and `status` (the per-purpose status for a subject, by `email:` or `external_id:`). Every test runs against recordings the real API produced.
+- `client.consent.decisions.authorize(token, subject:, suppress_receipt:)` — commit the capture token your own form received, with the application credential; a publishable key cannot commit.
+
+### Changed
+
+- Vendored corpus refreshed to the shared corpus 1.0.5.
+
 ## [0.6.0] - 2026-10-10
 
 ### Added
