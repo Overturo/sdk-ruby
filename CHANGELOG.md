@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.1] - 2026-10-26
+
+### Changed
+
+- The public repository carries its own release workflow and publishes to RubyGems with a trusted publisher. Vendored fixtures refreshed. No API change.
+
 ## [0.7.0] - 2026-10-15
 
 ### Added
